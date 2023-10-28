@@ -1,7 +1,11 @@
+'use client';
+import { useSession, signIn } from "next-auth/react"
 import Head from "next/head";
 import Link from "next/link";
 
 export default function Home() {
+  const { data: session, status } = useSession()
+
   return (
     <>
       <Head>
@@ -10,20 +14,28 @@ export default function Home() {
         <link rel="icon" href="/logo.png" />
         
       </Head>
-      <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-orange-400 overflow-hidden">
+      <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-orange-400 relative overflow-hidden">
         <div className="flex flex-row items-center justify-left m-10">
           <div className="text-3xl text-black">Nexus Read</div>
-          <Link href="/api/auth">
-            <div className="ml-20 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Login</div>
-          </Link>
+          <div className={status==="unauthenticated"?"":"hidden"}>
+            <div onClick={() => signIn()} className="ml-20 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Login</div>
+          </div>
           <Link href="/manga">
             <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga</div>
           </Link>
         </div>
-        <img src="/panels.jpg" className="absolute w-[50vw] rotate-45"/>
+        <img src="/panels.jpg" className="absolute ml-[600px] w-[50vw] border-5 border-black" style={{
+          transform: "rotate(35deg)"
+        }}/>
+
+        <div className='flex flex-col w-[40vw] p-10 mt-10'>
+          <div className="text-4xl text-black font-bold">Read Manga Online</div>
+          <div className="mt-3 text-2xl text-black">Read your favorite manga scans and scanlations online at Nexus Read. Read Manga Online, Absolutely Free and Updated Daily</div>
+          <Link href="/manga">
+            <div className="mt-10 text-2xl text-black cursor-pointer bg-pink-400 hover:bg-pink-500 rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Browse Manga</div>
+          </Link>
+        </div>
       </main>
     </>
-  );
+  ); 
 }
-//gay reply
-//stop gaying my code by doing undo shit

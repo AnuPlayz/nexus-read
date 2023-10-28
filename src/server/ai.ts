@@ -5,19 +5,43 @@ const Credentials = {
     Api_Secret: "76932334eddda394eed49d2ea8b18c7b",
     Authorization: "Basic YWNjX2IzNDI4ZTVkMjVlNzgxYjo3NjkzMjMzNGVkZGRhMzk0ZWVkNDlkMmVhOGIxOGM3Yg==",
 }
-const BASE_URL = "https://api.imagga.com/v2/tags?image_url=";
+const BASE_URL = "https://api.imagga.com/v2/categories/nsfw_beta?image_url=";
 
-export const loadTags = async (imageUrl: string) => {
-    const URL = BASE_URL + encodeURIComponent(imageUrl);
-
-    const response = await fetch(URL, {
-        headers: {
-            'Authorization': Credentials.Authorization,
+export const isNFSWPages = async (links: string[]): Promise<boolean> => {
+    let realNFSW = false;
+    for (const link of links) {
+        const real = await isNFSW(link);
+        if (real) {
+            realNFSW = true;
+            break;
         }
-    })
+    }
+    return realNFSW;
+}
 
-    const data = await response.json() as any;
-    const tags = data.result.tags.map((_d: any) => _d.confidence > 50 ? _d.tag.en : null).filter((d: any) => d !== null);
+export const isNFSW = async (link: string) => {
+    const url = BASE_URL + link;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': Credentials.Authorization
+        }
+    });
+    const data = await response.json() as {
+        result: {
+            categories: {
+                confidence: number,
+                name: {
+                    en: string
+                }
+            }[]
+        }
+    };
 
-    return tags;
+    const safeCategory = data.result.categories.find(category => category.name.en === "safe");
+    if (safeCategory && safeCategory.confidence > 80) {
+        return false;
+    }
+
+    return true;
 }

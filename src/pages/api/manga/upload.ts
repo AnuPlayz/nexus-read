@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '@/server/db'
-import { loadTags } from '@/server/ai'
+import { isNFSWPages } from '@/server/ai'
 
 interface Data {
   access_token: string
@@ -16,7 +16,7 @@ export default async function upload(
 ) {
   const { access_token, title, chapterNumber, pages, mangaId } = req.body as Data
 
-  const tags = await loadTags(req.body)  const account = await db.account.findFirst({
+  const account = await db.account.findFirst({
     where: {
       access_token
     }
@@ -32,6 +32,19 @@ export default async function upload(
   })
   if (!manga) {
     return res.status(404).json({ message: 'Manga not found' })
+  }
+
+  const isNFSWChapter = await isNFSWPages(pages)
+
+  if (isNFSWChapter && !manga.isNSFW) {
+    await db.manga.update({
+      where: {
+        id: mangaId
+      },
+      data: {
+        isNSFW: true
+      }
+    })
   }
 
   const chapter = await db.chapter.create({

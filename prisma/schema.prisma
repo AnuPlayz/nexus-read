@@ -18,6 +18,7 @@ model Manga {
   Chapter     Chapter[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  isNSFW      Boolean   @default(false)
 }
 
 model Chapter {
@@ -62,7 +63,7 @@ model User {
   email         String    @unique
   password      String?
   image         String?
-  emailVerified Boolean?   @default(false)
+  emailVerified Boolean?  @default(false)
   registeredAt  DateTime  @default(now())
   lastLoginAt   DateTime  @default(now())
   Manga         Manga[]

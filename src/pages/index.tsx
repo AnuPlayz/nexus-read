@@ -12,30 +12,34 @@ export default function Home() {
         <title>Nexus Read - Read Manga</title>
         <meta name="description" content="Read Manga Online" />
         <link rel="icon" href="/logo.png" />
-        
+
       </Head>
       <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-[#C7C7F1] relative overflow-hidden">
         <div className="flex flex-row items-center justify-left m-10">
-          <div className="text-3xl text-black">Nexus Read</div>
-          <div className={status==="unauthenticated"?"":"hidden"}>
+          <Link href="/">        <div className="text-3xl text-black">Nexus Read</div></Link>
+          <div className={status === "unauthenticated" ? "" : "hidden"}>
             <div onClick={() => signIn()} className="ml-20 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Login</div>
           </div>
           <Link href="/manga">
-            <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga</div>
+            <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga Collection</div>
           </Link>
         </div>
-        <img src="/panels.jpg" className="absolute ml-[600px] w-[50vw] border-5 border-black" style={{
-          transform: "rotate(35deg)"
-        }}/>
+        <img src="/collage.png" className="absolute ml-[650px] w-[50vw]" style={{
+          transform: "rotate(10deg)"
+        }} />
 
         <div className='flex flex-col w-[40vw] p-10 mt-10'>
           <div className="text-4xl text-black font-bold">Read Manga Online</div>
           <div className="mt-3 text-2xl text-black">Read your favorite manga scans and scanlations online at Nexus Read. Read Manga Online, Absolutely Free and Updated Daily</div>
-          <Link href="/manga">
+            <div className="flex flex-row space-x-10">
+            <Link href="/manga">
             <div className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Browse Manga</div>
-          </Link>
+            </Link> 
+          <div onClick={() => signIn()} className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Upload Manga</div>
+            </div>
+            
         </div>
       </main>
     </>
-  ); 
+  );
 }

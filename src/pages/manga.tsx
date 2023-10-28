@@ -23,23 +23,23 @@ export default function Home() {
                 <link rel="icon" href="/logo.png" />
 
             </Head>
-            <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-orange-400 relative overflow-hidden">
+            <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-[#C7C7F1] relative overflow-hidden">
                 <div className="flex flex-row items-center justify-left m-10">
-                    <div className="text-3xl text-black">Nexus Read</div>
+                    <Link href="/">        <div className="text-3xl text-black">Nexus Read</div></Link>
                     <div className={status === "unauthenticated" ? "" : "hidden"}>
                         <div onClick={() => signIn()} className="ml-20 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Login</div>
                     </div>
                     <Link href="/manga">
-                        <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga</div>
+                        <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga Collection</div>
                     </Link>
                 </div>
 
-                <div className="flex flex-row p-10">
+                <div className="flex flex-row rounded-lg p-10">
                     {mangas.map(manga => {
                         return (
                             <Link href={"/manga/" + manga.id}>
                                 <div className="flex flex-col m-2 bg-gray-500 rounded-lg h-32">
-                                    <img className="rounded-md" src={manga.coverImage} />
+                                    <img className="rounded-md w-32" src={manga.coverImage} />
                                     <div className="text-sm text-gray-700">{manga.title}</div>
                                 </div>
                             </Link>

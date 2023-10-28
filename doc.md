@@ -47,3 +47,16 @@
      - `_id` (Automatically generated unique tag ID)
      - `name`
      - `description`
+
+
+# Pages to do
+/ - Landing
+/api/auth - Login
+/manga/<id> - View Manga
+/manga/<id>/<chapter> - View that manga chapter
+/manga - after login from landing show all the manga ( recently uploaded at first )
+/manga/upload - logined user upload
+/manga/delete - the person who created the manga can delete(bruh cant we have update endpoint)
+
+sufficient bruh
+we need this much only for now not more i think this is enough?, a signup one? u here? signup, upload and everything retard just fuking think

@@ -47,8 +47,13 @@ export default function Home() {
                             <div className="text-3xl text-black">{manga.title}</div>
                         </div>
                         <div className="flex flex-row justify-center items-center">
-                            <div className="text-2xl text-black">{manga.description}</div>
+                            <div className="text-2xl text-gray-800">{manga.description}</div>
                         </div>
+                        {manga.isNSFW && (
+                            <div className="flex flex-row justify-center items-center">
+                                <div className="text-2xl text-black">NSFW</div>
+                            </div>
+                        )}
 
                         {chapters && (
                             <div className="flex flex-col justify-center items-center mt-10">

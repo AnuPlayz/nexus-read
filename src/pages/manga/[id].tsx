@@ -44,7 +44,7 @@ export default function Home() {
                             <img src={manga.coverImage} className="w-1/2" />
                         </div>
                         <div className="flex flex-row justify-center items-center">
-                            <div className="text-3xl text-black">{manga.title}</div>
+                            <div className="text-3xl text-gray-800">{manga.title}</div>
                         </div>
                         <div className="flex flex-row justify-center items-center">
                             <div className="text-2xl text-gray-800">{manga.description}</div>

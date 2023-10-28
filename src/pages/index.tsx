@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/logo.png" />
         
       </Head>
-      <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-orange-400 relative overflow-hidden">
+      <main className="flex h-screen flex-col bg-gradient-to-br from-[#C7C7F1] to-[#C7C7F1] relative overflow-hidden">
         <div className="flex flex-row items-center justify-left m-10">
           <div className="text-3xl text-black">Nexus Read</div>
           <div className={status==="unauthenticated"?"":"hidden"}>
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="text-4xl text-black font-bold">Read Manga Online</div>
           <div className="mt-3 text-2xl text-black">Read your favorite manga scans and scanlations online at Nexus Read. Read Manga Online, Absolutely Free and Updated Daily</div>
           <Link href="/manga">
-            <div className="mt-10 text-2xl text-black cursor-pointer bg-pink-400 hover:bg-pink-500 rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Browse Manga</div>
+            <div className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Browse Manga</div>
           </Link>
         </div>
       </main>

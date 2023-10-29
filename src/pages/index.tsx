@@ -25,7 +25,7 @@ export default function Home() {
           </Link>
         </div>
         <img src="/collage.png" className="absolute ml-[650px] w-[50vw]" style={{
-          transform: "rotate(10deg)"
+          transform: "rotate(0deg)"
         }} />
 
         <div className='flex flex-col w-[40vw] p-10 mt-10'>

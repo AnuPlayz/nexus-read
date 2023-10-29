@@ -24,9 +24,8 @@ export default function Home() {
             <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga Collection</div>
           </Link>
         </div>
-        <img src="/collage.png" className="absolute ml-[650px] w-[50vw]" style={{
-          transform: "rotate(0deg)"
-        }} />
+    
+        <img src="/collage.png" className="absolute ml-[650px] w-[50vw]" />
 
         <div className='flex flex-col w-[40vw] p-10 mt-10'>
           <div className="text-4xl text-black font-bold">Read Manga Online</div>
@@ -35,7 +34,9 @@ export default function Home() {
             <Link href="/manga">
             <div className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Browse Manga</div>
             </Link> 
-          <div onClick={() => signIn()} className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Upload Manga</div>
+            <Link href="/manga/upload">
+          <div className="mt-10 text-2xl text-black cursor-pointer bg-[#FFB9C6] hover:bg-[#fca5b5] rounded-md py-2 px-3 w-[fit-content] border-2 border-black">Upload Manga</div>
+          </Link>
             </div>
             
         </div>

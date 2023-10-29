@@ -5,7 +5,7 @@ export default async function upload(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let data = await db.manga.findMany({
+  const data = await db.manga.findMany({
     take: 10,
     orderBy: {
         updatedAt: 'desc'

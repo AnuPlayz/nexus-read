@@ -35,6 +35,7 @@ export default function Home() {
                         <div className="ml-10 text-2xl text-gray-700 cursor-pointer hover:text-gray-900">Manga Collection</div>
                     </Link>
                 </div>
+                
                 {chapter && chapter.pages && (
                     <div className="flex flex-col items-center justify-center w-full h-auto overflow-y-scroll">
                         {chapter.pages.map((x, i) => (
